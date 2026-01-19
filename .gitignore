@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Node.js
+node_modules/
+
+# VSCode
+.vscode/
+
+# 기타
+.DS_Store
+*.log
+
+# 환경 파일
+.env
+.env.*
