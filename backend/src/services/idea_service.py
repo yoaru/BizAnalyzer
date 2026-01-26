@@ -41,11 +41,12 @@ class IdeaService:
         # Industry와 RevenueModel enum 변환
         industry = None
         if request.industry:
-            industry = ModelIndustryType(request.industry.value)
+            industry = request.industry if isinstance(request.industry, str) else request.industry.value
+        
         
         revenue_model = None
         if request.revenue_model:
-            revenue_model = ModelRevenueModel(request.revenue_model.value)
+            revenue_model = request.revenue_model if isinstance(request.revenue_model, str) else request.revenue_model.value
         
         idea = Idea(
             user_id=user.id,
@@ -213,8 +214,8 @@ class IdeaService:
             value_proposition=idea.value_proposition,
             differentiation=idea.differentiation,
             constraints=idea.constraints,
-            industry=idea.industry.value if idea.industry else None,
-            revenue_model=idea.revenue_model.value if idea.revenue_model else None,
+            industry=idea.industry,
+            revenue_model=idea.revenue_model,
             status=idea.status.value,
             created_at=idea.created_at.isoformat() if idea.created_at else None,
             updated_at=idea.updated_at.isoformat() if idea.updated_at else None

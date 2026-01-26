@@ -57,17 +57,19 @@ class Idea(Base):
     user_id = Column(UUID(as_uuid=True), ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
     
     # Basic Info
-    title = Column(String(500), nullable=False)
-    description = Column(Text, nullable=False)
-    problem = Column(Text, nullable=False)
-    target_customer = Column(Text, nullable=False)
-    value_proposition = Column(Text, nullable=True)
-    differentiation = Column(Text, nullable=True)
-    constraints = Column(Text, nullable=True)
+    title = Column(String(500), nullable=False)  # 아이디어 제목    
+    description = Column(Text, nullable=False) # 아이디어 개요
+    problem = Column(Text, nullable=False) # 문제점
+    target_customer = Column(Text, nullable=False) # 타겟 고객
+    value_proposition = Column(Text, nullable=True) # 가치 제안
+    revenue_model = Column(Text, nullable=True) # 수익 모델
+    differentiation = Column(Text, nullable=True) # 차별화 요소
+    constraints = Column(Text, nullable=True) # 제약 사항
     
+
     # Classification
-    industry = Column(SQLEnum(IndustryType), nullable=True)
-    revenue_model = Column(SQLEnum(RevenueModel), nullable=True)
+    industry = Column(String(50), nullable=True)
+    # revenue_model은 위에서 Text로 이미 정의됨
     
     # Status
     status = Column(SQLEnum(IdeaStatus), default=IdeaStatus.CREATED)
@@ -99,8 +101,8 @@ class Idea(Base):
             "value_proposition": self.value_proposition,
             "differentiation": self.differentiation,
             "constraints": self.constraints,
-            "industry": self.industry.value if self.industry else None,
-            "revenue_model": self.revenue_model.value if self.revenue_model else None,
+            "industry": self.industry,
+            "revenue_model": self.revenue_model,
             "status": self.status.value,
             "created_at": self.created_at.isoformat() if self.created_at else None,
             "updated_at": self.updated_at.isoformat() if self.updated_at else None

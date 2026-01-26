@@ -46,11 +46,11 @@ class IdeaStatus(str, Enum):
 class CreateIdeaRequest(BaseModel):
     """아이디어 생성 요청"""
     title: str = Field(..., min_length=1, max_length=500)
-    description: str = Field(..., min_length=10)
-    problem: str = Field(..., min_length=10)
-    target_customer: str = Field(..., min_length=5)
+    description: str = Field(..., min_length=3)
+    problem: str = Field(..., min_length=3)
+    target_customer: str = Field(..., min_length=1)
     value_proposition: Optional[str] = None
-    revenue_model: Optional[RevenueModelType] = None
+    revenue_model: Optional[str] = None
     differentiation: Optional[str] = None
     constraints: Optional[str] = None
     industry: Optional[IndustryType] = None
@@ -59,11 +59,11 @@ class CreateIdeaRequest(BaseModel):
 class UpdateIdeaRequest(BaseModel):
     """아이디어 수정 요청"""
     title: Optional[str] = Field(None, min_length=1, max_length=500)
-    description: Optional[str] = Field(None, min_length=10)
-    problem: Optional[str] = Field(None, min_length=10)
-    target_customer: Optional[str] = Field(None, min_length=5)
+    description: Optional[str] = Field(None, min_length=3)
+    problem: Optional[str] = Field(None, min_length=3)
+    target_customer: Optional[str] = Field(None, min_length=1)
     value_proposition: Optional[str] = None
-    revenue_model: Optional[RevenueModelType] = None
+    revenue_model: Optional[str] = None
     differentiation: Optional[str] = None
     constraints: Optional[str] = None
     industry: Optional[IndustryType] = None

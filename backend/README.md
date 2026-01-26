@@ -58,7 +58,13 @@ pip install -r requirements.txt
 
 # 서버 실행
 uvicorn src.main:app --reload
+
+# 서버 실행 중인지 확인 
+curl http://localhost:8000/health
 ```
+
+
+
 
 ## API 문서
 
